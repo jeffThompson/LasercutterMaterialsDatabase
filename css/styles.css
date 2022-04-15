@@ -1,0 +1,199 @@
+/* css reset */
+*,*::before,*::after{box-sizing:border-box}body,h1,h2,h3,h4,p,figure,blockquote,dl,dd{margin:0}ul[role="list"],ol[role="list"]{list-style:none}html:focus-within{scroll-behavior:smooth}body{min-height:100vh;text-rendering:optimizeSpeed;line-height:1.5}a:not([class]){text-decoration-skip-ink:auto}img,picture{max-width:100%;display:block}input,button,textarea,select{font:inherit}@media(prefers-reduced-motion:reduce){html:focus-within{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important;scroll-behavior:auto !important}}
+
+/* basic setup */
+*, html, body {
+  font-family: 'Roboto Mono', 'Helvetica', 'Arial', sans-serif;
+  font-size:   16px;
+  line-height: 1.3em;
+}
+#wrapper {
+  width:      90%;
+  max-width:  600px;
+  margin:     2em auto 6em auto;
+  overflow-x: hidden;
+}
+
+/* typography stuff */
+h1 {
+  font-size:   2em;
+  font-weight: 700;
+  line-height: 2em;
+}
+p {
+  font-size:   1em;
+}
+
+/* links */
+a, a:link, a:visited {
+  color: black;
+}
+a:active, a:hover, #material-index a:hover, #nav a:hover {
+  color:           rgb(200,100,0);
+  text-decoration: underline;
+}
+
+/* footer */
+footer {
+  color:      rgb(150,150,150);
+  margin-top: 2em;
+}
+footer p {
+  line-height: 1.6em;
+}
+footer p:first-child {
+  text-transform: uppercase;
+}
+
+/* navigation to prev/next material */
+#nav, #material-data {
+  display: none;
+}
+#nav {
+  text-align:    center;
+  margin-bottom: 2em;
+}
+#nav a {
+  color:           rgb(150,150,150);
+  text-decoration: none;
+}
+#prev, #next {
+  text-decoration: none;
+}
+#prev {
+  margin-right: 0.6em;
+}
+#next {
+  margin-left: 0.6em;
+}
+
+/* little decorative square on the index page */
+#square {
+  width:            75px;
+  height:           75px;
+  background-color: rgb(255,150,0);
+  margin-bottom:    2em;
+}
+
+/* index of materials */
+#material-index {
+  padding-bottom: 2em;
+  border-bottom:  1px solid rgb(0,0,0, 0.5);
+}
+#material-index a {
+  text-decoration: none;
+}
+#material-index p {
+  line-height: 1.8em;
+}
+.index-id {
+  display: inline-block;
+  width:   60px;
+}
+#index-note {
+  color:         rgb(150,150,150);
+  margin-bottom: 1em;
+  line-height:   1.3em;
+}
+
+/* materials listing */
+table {
+  width:           100%;
+  border-collapse: collapse;
+  border:          1px solid rgba(0,0,0, 0.3);
+}
+tr:not(:last-child) {
+  border-bottom: 1px solid rgba(0,0,0, 0.3);
+}
+tr:nth-child(even) {
+  background-color: rgb(250,245,240);
+}
+tr:nth-child(odd) {
+  background-color: white;
+}
+td {
+  padding: 0.6em;
+}
+td:nth-child(odd) {
+  font-weight: 900;
+}
+td:nth-child(even) {
+  border-left: 1px solid rgba(0,0,0, 0.3);
+}
+.label {
+  text-transform: uppercase;
+}
+
+/* subsections */
+.cell-with-table {
+  padding: 0;
+}
+.notes-list, .warnings-list {
+  margin:  0 0 0 1em;
+  padding: 0;
+}
+#warnings {
+  font-weight:      700;
+  background-color: rgb(200,100,0);
+  color:            white;
+}
+#qr-download {
+  margin-top: 1em;
+}
+#download {
+  margin-top: 1em;
+}
+
+/* cut params span three rows */
+#cut-params {
+  border: none;
+}
+#cut-params tr {
+  padding: 0;
+}
+#cut-params td:nth-child(odd) {
+  width:         0%;
+  padding-right: 3em;
+}
+#cut-params td:nth-child(even) {
+  width: 90%;
+}
+
+/* tooltips on certain settings */
+.tooltip {
+  position:      relative;
+  display:       inline-block;
+  border-bottom: 1px dotted black;
+}
+.tooltip-text {
+  font-weight: normal;
+}
+.tooltip .tooltip-text {
+  visibility:       hidden;
+  width:            250px;
+  background-color: black;
+  color:            white;
+  text-align:       center;
+  border-radius:    8px;
+  padding:          16px 16px 20px 16px;
+  
+  position:         absolute;
+  z-index:          1;
+  top:             -8px;
+  left:             calc(100% + 20px);
+}
+.tooltip:hover .tooltip-text {
+  visibility: visible;
+}
+/* arrow on left side */
+.tooltip .tooltip-text::after {
+  content:      '';
+  position:     absolute;
+  top:          20px;
+  right:        100%;
+  margin-top:  -7px;    /* essentially the size of the arrow */
+  border-width: 7px;
+  border-style: solid;
+  border-color: transparent black transparent transparent;
+}
+

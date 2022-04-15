@@ -1,0 +1,179 @@
+<!doctype html>
+<html profile="http://www.w3.org/2005/10/profile">
+  <head>
+    <meta charset="UTF-8">
+
+    <title>Laser Materials Database</title>
+
+    <!-- enable responsiveness on mobile devices-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+    <!-- fonts -->
+    <!-- https://fonts.google.com/specimen/Roboto+Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet"> 
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link href="css/styles.css" rel="stylesheet" type="text/css">
+  </head>
+
+  <body>
+    <div id="wrapper">
+      <section id="nav">
+        <p>
+          <a id="prev" href="">&larr;</a>
+
+          <!-- https://stackoverflow.com/a/50759516/1167783 -->
+          <!-- (or just use href="?" which also works) -->
+          <a href="javascript:window.location.href=/^[^?]+/.exec(window.location.href)[0]">Index</a> 
+          
+          <a id="next" href="">&rarr;</a>
+        </p>
+      </section>
+
+      <table id="material-data">
+        <tbody>
+          <tr id="material">
+            <td class="label">Material</td><td class="data"></td>
+          </tr>
+
+          <tr id="warnings">
+            <td class="label">Warnings</td><td class="data"></td>
+          </tr>
+
+          <tr id="finish">
+            <td class="label">Finish</td><td class="data"></td>
+          </tr>
+          <tr id="color">
+            <td class="label">Color</td><td class="data"></td>
+          </tr>
+          
+          <tr id="preset">
+            <td class="label">
+              Preset
+              <span class="tooltip">
+                <i class="fa fa-question-circle"></i>
+                <span class="tooltip-text">Suggested material preset. Gets adjusted with values listed.</span>
+              </span>
+            </td>
+            <td class="data"></td>
+          </tr>
+          
+          <tr id="listed-thickness">
+            <td class="label">
+              Listed thickness
+              <span class="tooltip">
+                <i class="fa fa-question-circle"></i>
+                <span class="tooltip-text">The nominal thickness of the material, though that's not usually the real thickness so use the value below.</span>
+              </span>
+            </td>
+            <td class="data"></td>
+          </tr>
+          
+          <tr id="actual-thickness">
+            <td class="label">
+              Actual thickness
+              <span class="tooltip">
+                <i class="fa fa-question-circle"></i>
+                <span class="tooltip-text">The measured thickness of the material. This is important for ensuring the laser is properly focused. If the material has a lot of variation in thickness, you may need to measure every time.</span>
+              </span>
+            </td>
+            <td class="data"></td>
+          </tr>
+
+          <tr>
+            <td class="label">
+              Power adjustments
+              <span class="tooltip">
+                <i class="fa fa-question-circle"></i>
+                <span class="tooltip-text">+/- adjustments to the power for cutting and engraving.</span>
+              </span>
+            </td>
+            <td class="cell-with-table">
+              <table id="cut-params">
+                <tr id="raster">
+                  <td class="label">Raster</td>
+                  <td class="data"></td>
+                </tr>
+                <tr id="vector">
+                  <td class="label">Vector</td>
+                  <td class="data"></td>
+                </tr>
+                <tr id="cut">
+                  <td class="label">Cut</td>
+                  <td class="data"></td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <tr id="transfer-tape">
+            <td class="label">
+              Needs transfer tape
+              <span class="tooltip">
+                <i class="fa fa-question-circle"></i>
+                <span class="tooltip-text">Some materials will require or benefit from removing the original protective cover and applying transfer tape instead.</span>
+              </span>
+            </td>
+            <td class="data"></td>
+          </tr>
+
+          <tr id="notes">
+            <td class="label">Notes</td><td class="data"></td>
+          </tr>
+
+          <tr id="vendor">
+            <td class="label">Vendor</td><td class="data"></td>
+          </tr>
+          <tr id="price">
+            <td class="label">
+              Price
+              <span class="tooltip">
+                <i class="fa fa-question-circle"></i>
+                <span class="tooltip-text">Price we charge for this material. May include a small markup when you buy from the Fab Lab.</span>
+              </span>
+            </td>
+            <td class="data"></td>
+          </tr>
+
+          <tr id="material-id">
+            <td class="label">ID</td><td class="data"></td>
+          </tr>
+
+          <tr id="qr-download">
+            <td class="label">
+              QR code
+              <span class="tooltip">
+                <i class="fa fa-question-circle"></i>
+                <span class="tooltip-text">QR code leading to the page for this material. To be used labeling samples.</span>
+              </span>
+            </td>
+            <td class="data">
+              <p id="qr"></p>
+              <p id="download"><a href="" download="">Download sticker</a></p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <footer>
+        <p>Lasercutter Materials Database</p>
+        <p id="where"></p>
+        <p>
+          <a id="spreadsheet-url" href="" target="_blank">Data</a> &bull; 
+          <a href="https://github.com/jeffThompson" target="_blank">Source code</a>
+        </p>
+        <p>Built by <a href="http://www.jeffreythompson.org" target="_blank">Jeff Thompson</a></p>
+        <p><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a></p>
+        <p>2022</p>
+      </footer>
+    </div>
+  </body>
+
+  <script src="js/papaparse.min.js"></script>
+  <script src="js/qrcode.min.js"></script>
+  <script src="js/everything.js"></script>
+</html>
+
