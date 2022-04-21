@@ -99,7 +99,7 @@ The spreadsheet containing your list of materials is intended to be easy to edit
 **🆔 MATERIAL ID**  
 A unique, three-digit ID for each material. This is used to create the URL for the material and should include three [leading zeros](https://en.wikipedia.org/wiki/Leading_zero). For example, material `1` should be listed as `001`, `27` would be `027`
 
-**🧱 MATERIAL**  
+**🪵 MATERIAL**  
 The name for the material. You can specify color, finish, and thickness later. Example: `Acrylic` or `Bamboo`
 
 **🎨 COLOR**  
@@ -181,7 +181,7 @@ This repository also includes a folder of sample files which we use in the VA&T 
 
 ![](Images/SmallLaserTest.png)
 
-The original Illustrator file and a desktop background are also included as bonus materials.
+A version without cut lines and a desktop background for your lasercutter computer are also included as bonus materials.
 
 ***
 
