@@ -84,40 +84,40 @@ Save the file and that's it!
 ### LISTING MATERIALS  
 The spreadsheet containing your list of materials is intended to be easy to edit and add to! While it's probably pretty intuitive to understand, this section goes over everything in detail.
 
-**MATERIAL ID**
+**MATERIAL ID**  
 A unique, three-digit ID for each material. This is used to create the URL for the material and should include [leading zeros](https://en.wikipedia.org/wiki/Leading_zero). For example, material `1` should be listed as `001`.
 
-**MATERIAL**
+**MATERIAL**  
 The name for the material. You can specify color, finish, and thickness later. Example: `Acrylic`
 
-**COLOR**
+**COLOR**  
 Optional: list the color of the material. If not listed, this section won't be shown. Example: `Black` or `Flourescent blue`
 
-**FINISH**
+**FINISH**  
 Optional: list the surface finish of the material. If not listed, this section won't be shown. Example: `Matte` or `Glossy` 
 
-**LISTED THICKNESS**
+**LISTED THICKNESS**  
 The thickness the material is *supposed* to be. If unknown or it varies, you can list that instead. Example: `0.125"`
 
-**ACTUAL THICKNESS**
+**ACTUAL THICKNESS**  
 The measured thickness of the material, which is often different than the listed thickness. If unknown or it varies, you can list that instead. Example: `0.118"`
 
-**PRESET**
+**PRESET**  
 Which preset to use in your laser software. If listed using the `>` symbol, the website will replace this with a fancy arrow indicating nested presets. Example: `Plastic > Acrylic > Cast Acrylic > Deep Engraving`
 
-**RASTER**
+**RASTER**  
 +/- change for raster engraving. If no change, leave blank. Can also say things like `(see note)` or any other text. Example: `20%` or `-15%`
 
-**VECTOR**
+**VECTOR**  
 Same as `Raster` but for vector engraving.
 
-**CUT**
+**CUT**  
 Same as `Raster` but for cutting.
 
-**NEEDS TRANSFER TAPE**
+**NEEDS TRANSFER TAPE**  
 List whether a material needs transfer tape to be applied or not. Can be listed with any text. Example: `Yes` or `Not required but will help keep the matte side clean`
 
-**WARNINGS**
+**WARNINGS**  
 Any crucial warnings for users. Will be shown at the top with a bright background color. Multiple warnings can be listed on separate lines (in the same cell) with a bullet character, which will be turned into a nice-looking list! 
 
 Example: `Glass can only be etched, not cut!` or...
@@ -127,16 +127,16 @@ Example: `Glass can only be etched, not cut!` or...
 • Approved acrylic only!
 ```
 
-**NOTES**
+**NOTES**  
 Notes that will help users get better results. These can be formatted just like the `Warnings`. Example: `Use transfer tape for the best etching and to avoid flames while cutting` or with bullets (as shown above)
 
-**VENDOR**
+**VENDOR**  
 Where the material can be purchased from. If a `URL` is included, this will become a link. Example: `McMaster Carr`
 
-**URL**
+**URL**  
 Optional: a link to where the material can be purchased.
 
-**PRICE**
+**PRICE**  
 The price charged to users. If blank, this will be ommitted. Be sure to add the currency in the spreadsheet. Example: `$14` or `£12.50`
 
 > The materials spreadsheet is set up in a particular way so it can work with the code for the website. Changing the names of columns will mess things up! If you have items you'd like added, please [create an issue here on Github](https://github.com/jeffThompson/LasercutterMaterialsDatabase/issues) and I'll do my best to add support. Or mod the code and submit a pull request!
