@@ -2,12 +2,16 @@
 
 An easily-customizable website for keeping track of laser-cutter settings. Publishes everything from a Google Sheet (or `csv` file) and allows for cut/engrave adjustments, notes and warnings... and even generates QR codes for each material for easy access!
 
+This was developed to let students in the Visual Arts & Technology program at Stevens Institute of Technology easily access info about materials for the laser-cutter and explore new materials they didn't know were possible. It spiralled out of control and here we are.
+
 ***
 
 ### LIVE DEMO  
 You can view a working version of this project here: http://www.jeffreythompson.org/lasercutter  
 
-Or scan this QR code to view a material listing: ![A QR code, which links to a sample material listing](Images/SampleQRCode.png)
+Or scan this QR code to view a material listing: 
+
+![A QR code, which links to a sample material listing](Images/SampleQRCode.png)
 
 ***
 
@@ -34,9 +38,9 @@ This project relies on several wonderful open-source projects:
 ***
 
 ### CREATING YOUR DATABASE  
-In order to make this process as easy as possible, especially for folks who have never made a website, I suggest using Google Sheets for your database. Alternatively, you can use a local `csv` file or export one from Excel.
+In order to make setup as easy as possible, especially for folks who have never made a website, I suggest using Google Sheets for your database. Alternatively, you can use a local `csv` file or export one from Excel.
 
-The format for this spreadsheet needs to be exactly right for the site to work, so I suggest [starting with mine and duplicating the file](https://docs.google.com/spreadsheets/d/10eG88FrLw_cyFG9sk5CHbmlSF048J4ngjEk8lX-JaIU/edit#gid=0). We'll get into the various entries in a moment.
+The format for this spreadsheet needs to be exactly right for the site to work, so I suggest [starting with mine and duplicating the file](https://docs.google.com/spreadsheets/d/10eG88FrLw_cyFG9sk5CHbmlSF048J4ngjEk8lX-JaIU/edit#gid=0). (Or, if you're using a Universal VLS4.6 you can just use our settings!) We'll get into the various entries in a moment.
 
 When you're ready to go, you'll need to create a version of the spreadsheet that the site can work with. In Sheets, go to `File → Share → Publish to Web...` (don't use the big `Share` button in the upper-right corner, it won't work for this!)
 
@@ -64,11 +68,11 @@ To get the site working, you only need to modify one file: `settings.json`. Open
 }
 ```
 
-The `location` and `instution` settings will show up in the footer of the page. In my case, our lasercutter is in the `VA&T Fab Lab` and is owned by `Stevens Institute of Technology`. 
+The `location` and `instution` settings will show up in the footer of the page. In my case, our lasercutter is in the `VA&T Fab Lab` and is owned by `Stevens Institute of Technology`. This is especially useful for folks that might have more than one lasercutter.
 
-There are also two URLs: `csv` is the link to your database that we created earlier. If you're using a local `csv` file, just include the path and filename.
+There are also two URLs: `csv` is the link to your database we created earlier. If you're using a local `csv` file, just include the path and filename.
 
-The `spreadsheetURL` is a quick link to your spreadsheet, letting folks quickly scan all the materials and for you to edit and add to it. Google Sheets will respect the edit settings you have in place, so it should be safe to include but if you'd prefer not to, you can leave this blank and it won't show up.
+The `spreadsheetURL` will create a link to your full spreadsheet, letting folks quickly scan all the materials and for you to edit and add to it without having to find it again. Google Sheets will respect the edit settings you have in place, so it should be safe to include but if you'd prefer not to, you can leave this blank and it won't show up.
 
 Putting it all together, this is what my `json` file looks like:
 
@@ -90,27 +94,27 @@ Save the file and that's it!
 ### LISTING MATERIALS  
 The spreadsheet containing your list of materials is intended to be easy to edit and add to! While it's probably pretty intuitive to understand, this section goes over everything in detail.
 
-> The materials spreadsheet is set up in a particular way so it can work with the code for the website. Changing the names of columns will mess things up! If you have items you'd like added, please [create an issue here on Github](https://github.com/jeffThompson/LasercutterMaterialsDatabase/issues) and I'll do my best to add support. Or mod the code and submit a pull request!
+> The spreadsheet is set up in a particular way so it can work with the code for the website. Changing the names of columns will mess things up! If you have items you'd like added, please [create an issue here on Github](https://github.com/jeffThompson/LasercutterMaterialsDatabase/issues) and I'll do my best to add support. Or mod the code and submit a pull request!
 
-**MATERIAL ID**  
-A unique, three-digit ID for each material. This is used to create the URL for the material and should include [leading zeros](https://en.wikipedia.org/wiki/Leading_zero). For example, material `1` should be listed as `001`.
+**🆔 MATERIAL ID**  
+A unique, three-digit ID for each material. This is used to create the URL for the material and should include three [leading zeros](https://en.wikipedia.org/wiki/Leading_zero). For example, material `1` should be listed as `001`, `27` would be `027`
 
-**MATERIAL**  
+**🧱 MATERIAL**  
 The name for the material. You can specify color, finish, and thickness later. Example: `Acrylic` or `Bamboo`
 
-**COLOR**  
+**🎨 COLOR**  
 Optional: the color of the material. If not listed, this section won't be shown. Example: `Black` or `Flourescent blue`
 
-**FINISH**  
+**💅 FINISH**  
 Optional: the surface finish of the material. If not listed, this section won't be shown. Example: `Matte` or `Glossy` 
 
-**LISTED THICKNESS**  
+**↕️ LISTED THICKNESS**  
 The thickness the material is *supposed* to be. If unknown or it varies, you can list that instead. Be sure to include the unit of measurement. Example: `0.125"` or `3mm` or `1/4-inch`
 
-**ACTUAL THICKNESS**  
+**📏 ACTUAL THICKNESS**  
 The measured thickness of the material, which is often different than the listed thickness. If unknown or it varies, you can list that instead. Example: `0.118"` or `3.2mm`
 
-**PRESET**  
+**⚡️ PRESET**  
 Which preset to use in your laser software. If split up using the `>` symbol, the website will replace this with a fancy arrow indicating nested presets. Example: `Plastic > Acrylic > Cast Acrylic > Deep Engraving` will render as...
 
 ```
@@ -120,19 +124,19 @@ Plastic
     ↳ Deep Engraving
 ```
 
-**RASTER**  
+**🔳 RASTER**  
 +/- change for raster engraving. If no change, leave blank. Can also say things like `(see note)` or any other text instead. Example: `20%` or `-15%`
 
-**VECTOR**  
+**🔲 VECTOR**  
 Same as `Raster` but for vector engraving.
 
-**CUT**  
+**🪚 CUT**  
 Same as `Raster` but for cutting.
 
-**NEEDS TRANSFER TAPE**  
+**📼 NEEDS TRANSFER TAPE**  
 List whether a material needs transfer tape to be applied or not. Can be listed with any text. Example: `Yes` or `Not required but will help keep the matte side clean`
 
-**WARNINGS**  
+**⚠️ WARNINGS**  
 Any crucial warnings for users. Will be shown at the top with a bright background color. Multiple warnings can be listed on separate lines (in the same cell) with a bullet character at the start of each line, which will be turned into a nice-looking list! 
 
 Example: `Glass can only be etched, not cut!` or...
@@ -144,16 +148,16 @@ Example: `Glass can only be etched, not cut!` or...
 
 > 🤓 Hold down `Command/Control` and press `Enter` to create a new line in a cell.
 
-**NOTES**  
+**🗒 NOTES**  
 Info that will help users get better results. These can be formatted just like the `Warnings`. Example: `Use transfer tape for the best etching and to avoid flames while cutting` or multiple items with bullets (as shown above)
 
-**VENDOR**  
+**🏪 VENDOR**  
 Where the material can be purchased from. If a `URL` is included, this will become a link. Example: `McMaster Carr` or `Inventables`
 
-**URL**  
+**🔗 URL**  
 Optional: a link to where the material can be purchased.
 
-**PRICE**  
+**💰 PRICE**  
 The price charged to users. If blank, this will be ommitted. Be sure to add the currency. Example: `$14` or `£12.50`
 
 ***
