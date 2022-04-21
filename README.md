@@ -109,10 +109,10 @@ Optional: the color of the material. If not listed, this section won't be shown.
 Optional: the surface finish of the material. If not listed, this section won't be shown. Example: `Matte` or `Glossy` 
 
 **↕️ LISTED THICKNESS**  
-The thickness the material is *supposed* to be. If unknown or it varies, you can list that instead. Be sure to include the unit of measurement. Example: `0.125"` or `3mm` or `1/4-inch`
+The thickness the material is *supposed* to be. If unknown or it varies, you can list that instead. Be sure to include the unit of measurement. Example: `0.125"` or `3mm` or `Varies`
 
 **📏 ACTUAL THICKNESS**  
-The measured thickness of the material, which is often different than the listed thickness. If unknown or it varies, you can list that instead. Example: `0.118"` or `3.2mm`
+The measured thickness of the material, which is often different than the listed thickness. If unknown or it varies, you can list that instead. Example: `0.118"` or `3.2mm` or `Varies`
 
 **⚡️ PRESET**  
 Which preset to use in your laser software. If split up using the `>` symbol, the website will replace this with a fancy arrow indicating nested presets. Example: `Plastic > Acrylic > Cast Acrylic > Deep Engraving` will render as...
@@ -146,19 +146,19 @@ Example: `Glass can only be etched, not cut!` or...
 • Approved acrylic only!
 ```
 
-> 🤓 Hold down `Command/Control` and press `Enter` to create a new line in a cell.
+> 🤓 Hold down `Command/Control` and press `Enter` to create a new line in a cell. Press `Option + *` to make a bullet character.
 
 **🗒 NOTES**  
 Info that will help users get better results. These can be formatted just like the `Warnings`. Example: `Use transfer tape for the best etching and to avoid flames while cutting` or multiple items with bullets (as shown above)
 
-**🏪 VENDOR**  
+**🛍 VENDOR**  
 Where the material can be purchased from. If a `URL` is included, this will become a link. Example: `McMaster Carr` or `Inventables`
 
 **🔗 URL**  
 Optional: a link to where the material can be purchased.
 
 **💰 PRICE**  
-The price charged to users. If blank, this will be ommitted. Be sure to add the currency. Example: `$14` or `£12.50`
+The price charged to users for a sheet of this material. If blank, this will be ommitted (useful if you don't supply the material but it can be cut). Be sure to add the currency. Example: `$14` or `£12.50`
 
 ***
 
