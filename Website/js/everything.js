@@ -92,10 +92,14 @@ function displayIndex(d) {
 
   let p = document.createElement('p');
   p.id = 'index-note';
-  p.innerHTML = 'Pick from this list or scan the QR code on the material sample';
+  p.innerHTML = 'Pick from this list or scan the QR code on the material sample. Materials not listed (including mystery materials) must be approved before they can be used!';
   list.appendChild(p);
 
+  let urls = [];
+  let baseURL = window.location.href;
   for (let [id, row] of Object.entries(d)) {
+    urls.push(baseURL + '?material_id=' + id);
+
     let html = '<a href="?material_id=' + id + '">';
     html += '<span class="index-id">#' + id + ':</span>';
     html += row.material + ' (';
@@ -114,6 +118,9 @@ function displayIndex(d) {
   }
   let wrapper = document.getElementById('wrapper');
   wrapper.prepend(list);
+
+  let allQR = document.getElementById('allQR');
+  allQR.innerHTML = '<a href="generateQR.html?urls=' + urls.join(',') + '">Print QR codes for all materials</a>';
 }
 
 // cleans up the csv dict
@@ -195,8 +202,17 @@ function updatePage(d) {
   document.querySelector('#actual-thickness .data').innerHTML = d['actual-thickness'];
 
   document.querySelector('#raster .data').innerHTML = addPlusSign(d.raster);
+  if (!d.raster || d.raster === '0') {
+    document.querySelector('#raster .data').classList.add('grayedOut');
+  }
   document.querySelector('#vector .data').innerHTML = addPlusSign(d.vector);
+  if (!d.vector || d.vector === '0') {
+    document.querySelector('#vector .data').classList.add('grayedOut');
+  }
   document.querySelector('#cut    .data').innerHTML = addPlusSign(d.cut);
+  if (!d.cut || d.cut === '0') {
+    document.querySelector('#cut .data').classList.add('grayedOut');
+  }
 
   document.querySelector('#transfer-tape .data').innerHTML = d['needs-transfer-tape'];
 

@@ -28,7 +28,7 @@ p {
 a, a:link, a:visited {
   color: black;
 }
-a:active, a:hover, #material-index a:hover, #nav a:hover {
+a:active, a:hover, #material-index a:hover, #nav a:hover, #allQR a:hover {
   color:           rgb(200,100,0);
   text-decoration: underline;
 }
@@ -43,6 +43,12 @@ footer p {
 }
 footer p:first-child {
   text-transform: uppercase;
+}
+#allQR {
+  margin-top: 2em;
+}
+#allQR a {
+  color:  rgb(150,150,150);
 }
 
 /* navigation to prev/next material */
@@ -94,6 +100,7 @@ footer p:first-child {
   color:         rgb(150,150,150);
   margin-bottom: 1em;
   line-height:   1.3em;
+  font-style:    italic;
 }
 
 /* materials listing */
@@ -120,7 +127,7 @@ td:nth-child(odd) {
 td:nth-child(even) {
   border-left: 1px solid rgba(0,0,0, 0.3);
 }
-.label {
+.label:not(.tooltip) {
   text-transform: uppercase;
 }
 
@@ -142,6 +149,9 @@ td:nth-child(even) {
 }
 #download {
   margin-top: 1em;
+}
+.grayedOut {
+  color: rgb(150,150,150);
 }
 
 /* cut params span three rows */

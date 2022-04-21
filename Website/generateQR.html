@@ -1,0 +1,143 @@
+<html>
+  <head>
+    <title>QR Codes</title>
+  </head>
+  <body>
+    <div id="wrapper">
+      <!-- canvas with qr codes will be
+           auto-generated here -->
+    </div>
+  </body>
+
+  <script src="js/qrcode.min.js"></script>
+  <script src="js/p5.js"></script>
+  <script>
+    let qrSize =  0.5 * 72;  // 1/2", to match the sample
+    let margin =  0.75 * 72;
+    let spacing = 0.5 * 72;
+
+    // extract list of urls
+    const params = new Proxy(
+      new URLSearchParams(window.location.search), 
+      { get: (searchParams, prop) => searchParams.get(prop) }
+    );
+    let urls = params.urls.split(',');
+
+    // create qr codes as data urls
+    let dataURLs = [];
+    for (let i=0; i<urls.length; i++) {
+      let dataURL = generateQRdataURL(urls[0]);
+
+      let id = urls[i].match(/material_id=(.*?)$/)[1];
+      dataURLs.push( { 'dataURL': dataURL, 'id': id } );
+    }
+
+    // create the page of qr codes using p5.js
+    function setup() {
+      let canvas = createCanvas(8.5*72, 11*72);
+      canvas.parent('wrapper');
+
+      textFont('Helvetica');
+      textSize(8);
+
+      background(255);
+      
+      let s = 'Print settings:';
+      s += '\n' + '- paper size: US Letter';
+      s += '\n' + '- scale: 100%';
+      s += '\n' + '- margins: none';
+      s += '\n' + '- print headers and footers: off';
+      fill(0);
+      noStroke();
+      text(s, margin, margin);
+
+      // add qr codes
+      let x = margin;
+      let y = margin + 100;
+      for (let i=0; i<dataURLs.length; i++) {
+        dataURLtoImage(dataURLs[i].dataURL, x, y);
+
+        fill(0);
+        noStroke();
+        text(dataURLs[i].id, x, y+qrSize+14);
+
+        if (i ==0) {
+          push();
+          translate(x, y);
+
+          stroke(0);
+          strokeWeight(0.5);
+          noFill();
+
+          // top arrow
+          line(0,-10, qrSize/2-10,-10);
+          line(qrSize/2+10,-10, qrSize,-10);
+          line(0,-10, 3,-13);
+          line(0,-10, 3,-7);
+          line(qrSize,-10, qrSize-3,-13);
+          line(qrSize,-10, qrSize-3,-7);
+          line(0,-13, 0,-7);
+          line(qrSize,-13, qrSize,-7);
+
+          // bottom arrow
+          line(-10,0, -10,qrSize/2-10);
+          line(-10,qrSize/2+10, -10,qrSize);
+          line(-10,0, -13,3);
+          line(-10,0, -7,3);
+          line(-10,qrSize, -13,qrSize-3);
+          line(-10,qrSize, -7,qrSize-3);
+          line(-13,0, -7,0);
+          line(-13,qrSize, -7,qrSize);
+
+          fill(0);
+          noStroke();
+          textAlign(CENTER, CENTER);
+          text(qrSize/72.0 + '"', -10,qrSize/2);
+          text(qrSize/72.0 + '"', qrSize/2,-10);
+
+          pop();
+        }
+
+        x += qrSize + spacing;
+        if (x > width-margin-qrSize) {
+          x = margin;
+          y += qrSize + spacing;
+        }
+      }
+    }
+
+    // create a p5.js image object from a data url
+    // https://github.com/processing/p5.js/issues/3055
+    function dataURLtoImage(dataURL, x, y) {
+      let img;
+      let raw = new Image();
+      raw.src = dataURL;
+      raw.onload = function() {
+        img = createImage(raw.width, raw.height);
+        img.drawingContext.drawImage(raw, 0,0);
+        image(img, x, y, qrSize,qrSize);
+      }
+    }
+    
+    // create a data url of the qr code
+    // https://github.com/davidshimjs/qrcodejs
+    // https://github.com/davidshimjs/qrcodejs/issues/260
+    function generateQRdataURL(s) {
+      const div = document.createElement('div');
+      new QRCode(
+        div,
+        {
+          text:        s,
+          width:       qrSize*4,   // quad-size for better quality
+          height:      qrSize*4,   // (shrunk when drawn to the canvas)
+          colorDark:   '#000000',
+          colorLight:  '#FFFFFF',
+          correctLevel: QRCode.CorrectLevel.H
+        }
+      );
+      const src = div.children[0].toDataURL('image/png');
+      return src;
+    }
+
+    </script>
+</html>
